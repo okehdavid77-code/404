@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - page Not Found</title>
+  <link rel="icon" href="icons8-google-48.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    #star-field {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none; /* Let clicks pass straight through to buttons */
+    }
+    body {
+      background: radial-gradient(circle at centre, #0f223d 0%, #050a12 100%);
+      color: rgb(13, 13, 66);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      height: 200hv;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 110%;
+      background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+       radial-gradient(circle at 85% 15%, rgba(135, 206, 250, 0.3) 1.5px, transparent 1.5px),
+       radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+       radial-gradient(circle at 25% 70%, rgba(255, 255, 255, 0.25) 2px, transparent 2px),
+       radial-gradient(circle at 75% 65%, rgba(135, 206, 250, 0.2) 1px, transparent 1px);
+       background-size: 500px 500px;
+       z-index: 1;   
+      }
+      .error-wrapper {
+        text-align: center;
+        z-index: 2;
+        max-width: 480px;
+        padding: 24px;
+      }
+
+      .error-code {
+        text-align: center;
+        z-index: 2;
+        max-width: 490px;
+        padding: 24px;
+        line-height: 0.85;
+        font-weight: 800;
+        margin-bottom: 2.6rem;
+        letter-spacing: -3px;
+        font-size: 13rem;
+        background: linear-gradient(to bottom, #3083e3 0%, #153b6b 100px);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 15px 35px rgba(48, 131, 227, 0.2));
+      }
+      .error-code {
+        font-size: 11rem;
+        font-weight: 900;
+        line-height: 0.95;
+        margin-bottom: 2.5rem;
+        letter-spacing: -2px;
+        background: linear-gradient(bottom, #4293f5 0%, #15325c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 15px 30px rgba(66, 147, 245, 0.25));
+      }
+      .error-title {
+        font-size: 2.2rem;
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+        letter-spacing: 0.5px;
+      }
+      .error-description {
+        font-size: 1.05rem;
+        color: #784ba8;
+        line-height: 1.7;
+        margin-bottom: 3.0rem;
+        font-weight: 400;
+      }
+      .error-container {
+        text-align: center;
+        z-index: 2;
+        max-width: 550px;
+        padding: 20px;
+      }
+      .error-text {
+        font-size: 1.05rem;
+        color: #556c87;
+        line-height: 1.6;
+        margin-bottom: 3.6rem;
+        font-weight: 400;
+      }
+      
+      .divider-line {
+        position: relative;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(48, 131, 227, 0.25)50% transparent);
+        width: 80px;
+        margin: 0 auto 2.5rem auto;
+      }
+      .divider-line::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 5px;
+        height: 5px;
+        background-color: #2b70c4;
+        border-radius: -50%;
+        box-shadow: 0 0 8px #3083e3;
+      }
+      .action-group {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-bottom: 4rem;
+      }
+      .btn-group {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-bottom: 4.5rem;
+      }
+      .btn {
+        padding: 14px 33px;
+        font-size: 0.99rem;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.26s ease-in-out;
+      }
+
+      .btn-outline {
+       background-color: rgba(3, 8, 15, 0.6);
+       color: #3b7ecf;
+       border: 1px solid #14273d;
+      }
+      .btn-filled {
+        background: linear-gradient(to bottom, #1e6cd4 0%, #104ba1 100%);
+        color: #ffffff;
+        border: 1px solid #2374e0;
+        box-shadow: 0 4px 18px rgba(30, 108, 212, 0.35);
+      }
+
+      .btn-outline:hover {
+       border-color: #3083e3;
+       color: #ffffff;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: #4c8be0;
+        border: 1px solid #1a2f4c;
+      }
+
+      .btn-secondary:hover {
+        border-color: #173e6d;
+        background-color: rgba(42, 95, 159, 0.05);
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(80, 105, 228, 0.45);
+      }
+
+      .btn-primary {
+        background: linear-gradient(to bottom, #2c7bf2 0%, #124cb3 100%);
+        color: #ffffff;
+        border: 1px solid #3d87f7;
+        box-shadow: 0 4px 20px rgba(44, 123, 242, 0.4);
+        transform: translate(-1px);
+      }
+      .btn-primary:hover {
+        box-shadow: 0 4px 20px rgba(44, 123, 242, 0.4);  
+        background:radial-gradient(circle at 50% 80%, #1a1e5c);
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(35, 43, 149, 0.45);
+      }
+      .btn-group {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-bottom: 4.5rem;
+      }
+
+      .btn-filled {
+        background: linear-gradient(to bottom, #1e6cd4 0%, #104ba1 100%);
+        color: #ffffff;
+        border: 1px solid #2374e0;
+        box-shadow: 0 4px 18px rgba(30, 108, 212, 0.35);
+      }
+
+      .btn-filled:hover {
+        box-shadow: 0 6px 24px rgba(30, 108, 212, 0.55);
+        transform: translate(-1px);
+      }
+
+      .meta-code-footer {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        color: #1a2a40;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .footer-stamp {
+        font-size: 0.75rem;
+        letter-spacing: 4px;
+        color: #1a2c42;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+  </style>
+</head>
+<body>
+  <div class="error-wrapper">
+    <div class="error-code">404</div>
+
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-description">The page you're looking for does not exist or has been moved somewhere else</p>
+
+    <div class="divider-line"></div>
+
+
+    <div class="action-group">
+      <a href="javascript:history.back()" class="btn btn-secondary">&larr; Go Back</a>
+      <a href="/" class="btn btn-primary">Back TO Home</a>
+    </div>
+
+    <div class="meta-code-footer">Error Code.404.Page Not Found</div>
+    </div>
+
+
+    <script>
+      const canvas = document.getElementByld('star-field');
+      const ctx = 75;//Total count of dots floating on screen
+
+
+      function initializeDimentions() {
+        canvas.width = window.innerWidth;
+        canvas.height = Winow.innerHeight;
+        buildDots();
+      }
+
+
+      function buildDots() {
+        dots = [];
+         for (let i = 0; i < maxDots; i++) {
+        dots.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.8 + 0.4,           
+          speedX: (Math.random() - 0.5) * 0.25,        
+          speedY: (Math.random() - 0.5) * 0.25,        
+          opacity: Math.random() * 0.6 + 0.1          
+        });
+      }
+    }
+
+     function runRenderLoop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < maxDots; i++) {
+        let d = dots[i];
+
+      
+        d.x += d.speedX;
+        d.y += d.speedY;
+
+        if (d.x < 0) d.x = canvas.width;
+        if (d.x > canvas.width) d.x = 0;
+        if (d.y < 0) d.y = canvas.height;
+        if (d.y > canvas.height) d.y = 0;
+
+        
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.radius, 0, Math.PI * 2);
+        
+        if (i % 5 === 0) {
+          ctx.fillStyle = `rgba(48, 131, 227, ${d.opacity})`;
+      }   else {
+        ctx.fillStyle = `rgba(255, 255, 255, ${d.opacity})`;
+      }
+      ctx.fill();
+    }
+
+    requestAnimationFrame(runRenderLoop);
+  }
+
+  window.addEventListner('resize', initializeDimentions);
+  initializeDimentions();
+  runRenderLoop();
+    </script>
+</body>
+</html>
+
+
+
+
+
